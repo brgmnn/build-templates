@@ -36,7 +36,7 @@ $(target): $(obj)
 obj/%.d: src/%.cpp
 	@printf '$(clrdep) %-$(len)s $(clroff)' "$@"
 	@mkdir -p "$(@D)"
-	$(compiler) -MM -MT '$@' $< > $(@:.o=.d)
+	g++ -MM -MT '$@' $< > $(@:.o=.d)
 
 # object files
 -include $(obj:.o=.d)
