@@ -23,10 +23,10 @@ len:=$(shell python -c \
 # colors
 include makefile.colors
 
-
 .PHONY: all clean
 
 all: $(target)
+
 
 $(target): $(obj)
 	@printf '$(clrexe) %-$(len)s $(clroff)' "$@"
@@ -39,7 +39,9 @@ obj/%.d: src/%.cpp
 	g++ -MM -MT '$@' $< > $(@:.o=.d)
 
 # object files
+ifneq ($(MAKECMDGOALS),clean)
 -include $(obj:.o=.d)
+endif
 obj/%.o: src/%.cpp obj/%.d
 	@printf '$(clrobj) %-$(len)s $(clroff)' "$@"
 	@mkdir -p "$(@D)"
@@ -51,5 +53,4 @@ obj/%.o: src/%.cpp obj/%.d
 # Clean all build files.
 clean:
 	@printf '$(clrrm) %-$(len)s $(clroff)' "$@"
-	rm -rf $(target) obj/*
-
+	rm -rf $(target) obj/* `find . -type f -name '*.d'`
