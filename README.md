@@ -10,8 +10,10 @@ Makefiles for projects. They can generally be used with minimal modification.
 
 The following templates are in this repo:
 
-* Make
-    * C++
 * Ant
     * Java
+* CMake
+    * C
+* Make
+    * C++
 
