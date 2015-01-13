@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HelloWorld" default="build" basedir=".">
+  <!-- Compiles the class files found in 'src'. -->
+  <target name="build">
+    <mkdir dir="build/classes" />
+    <javac srcdir="src" destdir="build/classes" includeantruntime="false" debug="true">
+    </javac>
+  </target>
+
+  <!-- Creates a .jar archive from the compiled classes. -->
+  <target name="jar" depends="build">
+    <mkdir dir="build/jar" />
+    <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+      <manifest>
+        <attribute name="Main-Class" value="HelloWorld" />
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- Cleans the project of all intermediate and output files. -->
+  <target name="clean">
+    <delete dir="build" />
+    <delete dir="doc" />
+  </target>
+
+  <!-- Runs the .jar archive. -->
+  <target name="run" depends="jar">
+    <java jar="build/jar/HelloWorld.jar" fork="true" />
+  </target>
+
+  <!-- Unit testing with JUnit. Write your JUnit test cases in files that end
+    with "*Test.java", all of these will then be executed by JUnit. Note that
+    Ant may not come with JUnit by default, in which case you need to install
+    it. -->
+  <target name="test" depends="jar">
+    <junit printsummary="yes">
+      <formatter type="plain" usefile="false" />
+      <batchtest fork="yes">
+        <fileset dir="src" includes="**/*Test.java" />
+      </batchtest>
+    </junit>
+  </target>
+
+  <!-- Generates documentation using Javadoc and places it in the `doc`
+    directory. -->
+  <target name="doc">
+    <javadoc sourcepath="src" destdir="doc" />
+  </target>
+</project>

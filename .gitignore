@@ -1,2 +1,9 @@
-obj/*
+# C/C++
+*/obj/*
 hello-world
+
+# Java
+*/build/*
+*/doc/*
+*.class
+*.jar
