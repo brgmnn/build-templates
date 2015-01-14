@@ -1,6 +1,8 @@
 # C/C++
 */obj/*
 hello-world
+*.d
+*.o
 
 # Java
 */build/*

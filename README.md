@@ -7,6 +7,12 @@ scratch each time seems wasteful. So in this repository are starting points
 for different build systems (normally that I have used). Some are just
 starting points and others are fairly comprehensive.
 
+## Simplified Templates ##
+
+I have included a simplified Makefile for people who are unfamiliar with them
+which is heavily annotated with comments and good for a starting point for
+small projects.
+
 ## Templates ##
 
 The following templates are in this repository:
@@ -15,6 +21,7 @@ The following templates are in this repository:
     * Java
 * CMake
     * C
-* Make
+* Makefile
+    * C
     * C++
 
