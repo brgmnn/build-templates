@@ -1,4 +1,4 @@
-## Using CMake ##
+## Usage ##
 
 Create a build folder where intermediate files will be placed and switch to
 that directory:

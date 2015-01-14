@@ -8,6 +8,6 @@ Compile the HelloWorld program with `make` and then run HelloWorld with
 * GNU Make.
 * Python.
 * A terminal that supports colour codes.
-* `g++` - Needed for generating dependency files.
+* `gcc` - Needed for generating dependency files.
 
 Python is used only to calculate the maximum line length of a list of lines.

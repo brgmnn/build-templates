@@ -1,10 +1,10 @@
 # Compiler flags
-flags := -std=c++98 -O3 -Wall -Wextra -pedantic
+flags := -std=c99 -O3 -Wall -Wextra -pedantic
 incs  :=
 libs  :=
 
 # build tools
-compiler := g++
+compiler := gcc
 linker	 := $(compiler)
 archiver := ar
 
@@ -14,8 +14,8 @@ src_dir := src/
 
 
 # object file paths
-src:=$(shell find $(src_dir) -type f -name '*.cpp')
-obj:=$(src:.cpp=.o)
+src:=$(shell find $(src_dir) -type f -name '*.c')
+obj:=$(src:.c=.o)
 obj:=$(obj:src/%=obj/%)
 len:=$(shell python -c \
 	"import sys; print max([len(a) for a in sys.argv[1:]])" $(obj) $(target))
@@ -33,16 +33,16 @@ $(target): $(obj)
 	$(linker) $(flags) $(obj) -o $(target) $(libs)
 
 # source dependency file
-obj/%.d: src/%.cpp
+obj/%.d: src/%.c
 	@printf '$(clrdep) %-$(len)s $(clroff)' "$@"
 	@mkdir -p "$(@D)"
-	g++ -MM -MT '$@' $< > $(@:.o=.d)
+	gcc -MM -MT '$@' $< > $(@:.o=.d)
 
 # object files
 ifneq ($(MAKECMDGOALS),clean)
 -include $(obj:.o=.d)
 endif
-obj/%.o: src/%.cpp obj/%.d
+obj/%.o: src/%.c obj/%.d
 	@printf '$(clrobj) %-$(len)s $(clroff)' "$@"
 	@mkdir -p "$(@D)"
 	$(compiler) $(flags) $(incs) -c $< -o $@

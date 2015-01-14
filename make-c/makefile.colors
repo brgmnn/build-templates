@@ -1,0 +1,8 @@
+# colors
+clroff:=\033[0m
+clrsrc:=\033[35;01m
+clrdep:=\033[30;01m
+clrobj:=\033[34;01m
+clrlib:=\033[33;01m
+clrexe:=\033[32;01m
+clrrm:=\033[31;01m
