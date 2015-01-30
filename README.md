@@ -21,6 +21,7 @@ The following templates are in this repository:
     * Java
 * CMake
     * C
+    * C++
 * Makefile
     * C
     * C++
